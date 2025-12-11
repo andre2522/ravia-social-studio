@@ -40,7 +40,7 @@ const Index = () => {
     window.location.href = finalUrl;
   };
 
-  // Sistema de notificações - uma a cada 5 segundos
+  // Sistema de notificações - uma a cada 10 segundos
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
@@ -49,19 +49,19 @@ const Index = () => {
       const notificationId = Date.now();
       setNotification({ name: randomName, id: notificationId });
 
-      // Remove a notificação após 4.5 segundos (antes da próxima aparecer)
+      // Remove a notificação após 9.5 segundos (antes da próxima aparecer)
       setTimeout(() => {
         setNotification(null);
-      }, 4500);
+      }, 9500);
     };
 
     // Mostra a primeira notificação após 3 segundos
     showNotification();
 
-    // Depois, mostra uma notificação a cada 5 segundos
+    // Depois, mostra uma notificação a cada 10 segundos
     const interval = setInterval(() => {
       showNotification();
-    }, 5000);
+    }, 10000);
 
     return () => {
       clearInterval(interval);
@@ -412,37 +412,32 @@ const Index = () => {
           key={notification.id}
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 animate-slide-in-right max-w-[calc(100vw-2rem)] sm:max-w-none"
         >
-          <div className="relative bg-gradient-to-br from-background/98 via-card/95 to-background/98 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-[0_8px_32px_rgba(0,0,0,0.6)] border-2 border-primary/60 w-[calc(100vw-2rem)] sm:w-auto sm:min-w-[280px] md:min-w-[320px]">
-            {/* Brilho pulsante dourado */}
-            <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl animate-pulse" />
-            {/* Borda interna dourada */}
-            <div className="absolute inset-[2px] border border-primary/30 rounded-xl sm:rounded-2xl pointer-events-none" />
-            
+          <div className="relative bg-primary rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-[0_8px_32px_rgba(0,0,0,0.6)] border-2 border-primary/80 w-[calc(100vw-2rem)] sm:w-auto sm:min-w-[280px] md:min-w-[320px]">
             <div className="relative flex items-center gap-2 sm:gap-3">
               {/* Ícone de check */}
-              <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/50">
-                <CheckCircle2 className="w-4 h-4 sm:w-6 sm:h-6 text-primary animate-scale-in" />
+              <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center border-2 border-primary-foreground/50">
+                <CheckCircle2 className="w-4 h-4 sm:w-6 sm:h-6 text-primary-foreground animate-scale-in" />
               </div>
               
               {/* Conteúdo */}
               <div className="flex-1 min-w-0">
-                <p className="text-foreground font-bold text-xs sm:text-sm md:text-base leading-tight truncate sm:whitespace-normal">
-                  <span className="text-primary font-extrabold">{notification.name}</span> se cadastrou grátis
+                <p className="text-primary-foreground font-bold text-xs sm:text-sm md:text-base leading-tight truncate sm:whitespace-normal">
+                  <span className="text-primary-foreground font-extrabold">{notification.name}</span> se cadastrou grátis
                 </p>
-                <p className="text-muted-foreground text-[10px] sm:text-xs mt-0.5 font-medium">
+                <p className="text-primary-foreground/90 text-[10px] sm:text-xs mt-0.5 font-medium">
                   há poucos segundos • Teste de 7 dias
                 </p>
               </div>
 
               {/* Badge de urgência */}
-              <div className="flex-shrink-0 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-primary/20 border border-primary/40">
-                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary animate-pulse" />
+              <div className="flex-shrink-0 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-primary-foreground/20 border border-primary-foreground/40">
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary-foreground animate-pulse" />
               </div>
             </div>
 
             {/* Barra de progresso animada */}
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-primary/10 rounded-b-xl sm:rounded-b-2xl overflow-hidden">
-              <div className="h-full bg-primary animate-progress-bar" />
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-primary-foreground/20 rounded-b-xl sm:rounded-b-2xl overflow-hidden">
+              <div className="h-full bg-primary-foreground animate-progress-bar" />
             </div>
           </div>
         </div>
