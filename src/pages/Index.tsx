@@ -2,20 +2,22 @@ import { useState, useEffect } from "react";
 import { Clock, TrendingUp, Zap, Instagram, Youtube, Linkedin, FileText, LayoutGrid, Video, Lightbulb, CalendarDays, Target, BarChart3, Sparkles, X, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Lista de 20 nomes diferentes (fora do componente para evitar recriação)
+const names = [
+  'Ana', 'Maria', 'João', 'Pedro', 'Carla', 'Lucas', 'Julia', 'Rafael', 
+  'Fernanda', 'Bruno', 'Mariana', 'Gabriel', 'Beatriz', 'Thiago', 'Isabela',
+  'Felipe', 'Camila', 'Rodrigo', 'Larissa', 'Gustavo'
+];
+
 const Index = () => {
 
   const [showUrgencyBanner, setShowUrgencyBanner] = useState(true);
   const [notification, setNotification] = useState<{ name: string; id: number } | null>(null);
 
-  // Lista de 20 nomes diferentes
-  const names = [
-    'Ana', 'Maria', 'João', 'Pedro', 'Carla', 'Lucas', 'Julia', 'Rafael', 
-    'Fernanda', 'Bruno', 'Mariana', 'Gabriel', 'Beatriz', 'Thiago', 'Isabela',
-    'Felipe', 'Camila', 'Rodrigo', 'Larissa', 'Gustavo'
-  ];
-
   // Função para capturar parâmetros UTM da URL atual e redirecionar
   const handleGetStarted = () => {
+    if (typeof window === 'undefined') return;
+    
     const urlParams = new URLSearchParams(window.location.search);
     const utmParams = new URLSearchParams();
     
@@ -40,6 +42,8 @@ const Index = () => {
 
   // Sistema de notificações - uma a cada 5 segundos
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const showNotification = () => {
       const randomName = names[Math.floor(Math.random() * names.length)];
       const notificationId = Date.now();
