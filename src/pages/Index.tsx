@@ -1,8 +1,9 @@
-import { Sparkles, Clock, TrendingUp, Zap, Instagram, Youtube, Linkedin, FileText } from "lucide-react";
+import { Clock, TrendingUp, Zap, Instagram, Youtube, Linkedin, FileText, LayoutGrid, Video, Lightbulb, CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
+import logoRavia from "@/assets/logo-ravia.png";
 
 const Index = () => {
   const [email, setEmail] = useState("");
@@ -23,12 +24,7 @@ const Index = () => {
       {/* Header */}
       <header className="relative z-10 px-6 py-6">
         <nav className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-2xl font-bold text-foreground">Ravia</span>
-          </div>
+          <img src={logoRavia} alt="Ravia" className="h-10" />
           <Button variant="heroOutline" size="sm">
             Entrar
           </Button>
@@ -40,7 +36,7 @@ const Index = () => {
         <div className="container mx-auto max-w-5xl text-center">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-8">
-              <Sparkles className="w-4 h-4" />
+              <Zap className="w-4 h-4" />
               IA para Redes Sociais
             </span>
           </div>
@@ -132,18 +128,22 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <FeatureCard
+              icon={<LayoutGrid className="w-8 h-8" />}
               title="Posts prontos"
               description="Textos, legendas e hashtags otimizadas para engajamento."
             />
             <FeatureCard
+              icon={<Video className="w-8 h-8" />}
               title="Roteiros de vídeo"
               description="Reels, TikToks e Shorts com ganchos que prendem a atenção."
             />
             <FeatureCard
+              icon={<Lightbulb className="w-8 h-8" />}
               title="Ideias virais"
               description="Trends do momento adaptadas para o seu nicho."
             />
             <FeatureCard
+              icon={<CalendarDays className="w-8 h-8" />}
               title="Calendário completo"
               description="Planejamento mensal com datas especiais e estratégia."
             />
@@ -232,11 +232,8 @@ const Index = () => {
       {/* Footer */}
       <footer className="relative z-10 px-6 py-12 border-t border-border">
         <div className="container mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground">Ravia</span>
+          <div className="flex items-center justify-center mb-4">
+            <img src={logoRavia} alt="Ravia" className="h-8" />
           </div>
           <p className="text-sm text-muted-foreground">
             © 2024 Ravia. Todos os direitos reservados.
@@ -257,9 +254,11 @@ const PainPointCard = ({ icon, title, description }: { icon: React.ReactNode; ti
   </div>
 );
 
-const FeatureCard = ({ title, description }: { title: string; description: string }) => (
+const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => (
   <div className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-glow/20 transition-all duration-300 group">
-    <div className="w-3 h-3 rounded-full bg-gradient-primary mb-4 group-hover:scale-150 transition-transform duration-300" />
+    <div className="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+      {icon}
+    </div>
     <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
     <p className="text-muted-foreground text-sm">{description}</p>
   </div>
