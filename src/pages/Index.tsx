@@ -113,9 +113,6 @@ const Index = () => {
             />
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
-            <Button variant="ghost" size="sm" className="hidden md:flex hover:text-primary transition-colors text-xs sm:text-sm">
-              Entrar
-            </Button>
             <Button 
               variant="heroOutline" 
               size="sm" 
