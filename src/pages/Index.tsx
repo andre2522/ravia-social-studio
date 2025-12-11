@@ -136,13 +136,13 @@ const Index = () => {
 
       {/* Platforms Section */}
       <section className="relative z-10 px-6 py-16 bg-card/30">
-        <div className="container mx-auto max-w-4xl text-center">
+        <div className="container mx-auto max-w-5xl text-center">
           <p className="text-lg text-muted-foreground mb-8">
             Tudo em um só lugar:
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+          <div className="flex justify-center items-center gap-4 md:gap-8 overflow-x-auto pb-2">
             <PlatformBadge name="Instagram" icon={<Instagram className="w-5 h-5" />} color="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400" />
-            <PlatformBadge name="TikTok" icon={<svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>} color="bg-foreground" />
+            <PlatformBadge name="TikTok" icon={<svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>} color="bg-black" />
             <PlatformBadge name="YouTube" icon={<Youtube className="w-5 h-5" />} color="bg-red-600" />
             <PlatformBadge name="LinkedIn" icon={<Linkedin className="w-5 h-5" />} color="bg-blue-600" />
             <PlatformBadge name="Blogs" icon={<FileText className="w-5 h-5" />} color="bg-orange-500" />
@@ -251,11 +251,11 @@ const BenefitCard = ({ icon, title, description }: { icon: string; title: string
 );
 
 const PlatformBadge = ({ name, icon, color }: { name: string; icon: React.ReactNode; color: string }) => (
-  <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-secondary/50 hover:bg-secondary transition-colors duration-300 group">
-    <div className={`w-8 h-8 rounded-full ${color} flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
+  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 hover:bg-secondary transition-colors duration-300 group shrink-0">
+    <div className={`w-7 h-7 rounded-full ${color} flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
       {icon}
     </div>
-    <span className="text-foreground font-medium">{name}</span>
+    <span className="text-foreground font-medium text-sm">{name}</span>
   </div>
 );
 
