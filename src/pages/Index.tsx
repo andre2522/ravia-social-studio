@@ -1,20 +1,8 @@
 import { Clock, TrendingUp, Zap, Instagram, Youtube, Linkedin, FileText, LayoutGrid, Video, Lightbulb, CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { toast } from "sonner";
 import logoRavia from "@/assets/logo-ravia.png";
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      toast.success("Você está na lista! Verifique seu e-mail para começar.");
-      setEmail("");
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
@@ -24,7 +12,10 @@ const Index = () => {
       {/* Header */}
       <header className="relative z-10 px-6 py-6">
         <nav className="container mx-auto flex items-center justify-between">
-          <img src={logoRavia} alt="Ravia" className="h-10" />
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent rounded-lg blur-sm -m-2" />
+            <img src={logoRavia} alt="Ravia" className="h-10 relative z-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" />
+          </div>
           <Button variant="heroOutline" size="sm">
             Entrar
           </Button>
@@ -50,19 +41,11 @@ const Index = () => {
             Sem estresse e sem precisar de agência. Posts, Reels, Stories, roteiros de vídeos, descrições e ideias estratégicas feitos sob medida para o seu negócio.
           </p>
           
-          <form onSubmit={handleSubmit} className="animate-fade-up-delay-3 flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-6">
-            <Input
-              type="email"
-              placeholder="Seu melhor e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1"
-            />
-            <Button type="submit" variant="hero" size="lg">
+          <div className="animate-fade-up-delay-3 mb-6">
+            <Button type="button" variant="hero" size="lg" className="px-10">
               Começar grátis
             </Button>
-          </form>
+          </div>
           
           <p className="animate-fade-up-delay-3 text-sm text-muted-foreground">
             Teste grátis por 7 dias — sem cartão de crédito e cancelamento fácil.
@@ -157,12 +140,12 @@ const Index = () => {
           <p className="text-lg text-muted-foreground mb-8">
             Tudo em um só lugar:
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            <PlatformBadge name="Instagram" />
-            <PlatformBadge name="TikTok" />
-            <PlatformBadge name="YouTube" />
-            <PlatformBadge name="LinkedIn" />
-            <PlatformBadge name="Blogs" />
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+            <PlatformBadge name="Instagram" icon={<Instagram className="w-5 h-5" />} color="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400" />
+            <PlatformBadge name="TikTok" icon={<svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>} color="bg-foreground" />
+            <PlatformBadge name="YouTube" icon={<Youtube className="w-5 h-5" />} color="bg-red-600" />
+            <PlatformBadge name="LinkedIn" icon={<Linkedin className="w-5 h-5" />} color="bg-blue-600" />
+            <PlatformBadge name="Blogs" icon={<FileText className="w-5 h-5" />} color="bg-orange-500" />
           </div>
         </div>
       </section>
@@ -207,19 +190,11 @@ const Index = () => {
                 Crie seu primeiro mês inteiro de conteúdo hoje mesmo.
               </p>
               
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-6">
-                <Input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1"
-                />
-                <Button type="submit" variant="hero" size="lg">
+              <div className="mb-6">
+                <Button type="button" variant="hero" size="lg" className="px-10">
                   Começar grátis
                 </Button>
-              </form>
+              </div>
               
               <p className="text-sm text-muted-foreground">
                 Sem cartão. Sem compromisso. Aproveite enquanto está disponível.
@@ -233,7 +208,10 @@ const Index = () => {
       <footer className="relative z-10 px-6 py-12 border-t border-border">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center mb-4">
-            <img src={logoRavia} alt="Ravia" className="h-8" />
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent rounded-lg blur-sm -m-2" />
+              <img src={logoRavia} alt="Ravia" className="h-8 relative z-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" />
+            </div>
           </div>
           <p className="text-sm text-muted-foreground">
             © 2024 Ravia. Todos os direitos reservados.
@@ -272,10 +250,13 @@ const BenefitCard = ({ icon, title, description }: { icon: string; title: string
   </div>
 );
 
-const PlatformBadge = ({ name }: { name: string }) => (
-  <span className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary/20 hover:text-primary transition-colors duration-300">
-    {name}
-  </span>
+const PlatformBadge = ({ name, icon, color }: { name: string; icon: React.ReactNode; color: string }) => (
+  <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-secondary/50 hover:bg-secondary transition-colors duration-300 group">
+    <div className={`w-8 h-8 rounded-full ${color} flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
+      {icon}
+    </div>
+    <span className="text-foreground font-medium">{name}</span>
+  </div>
 );
 
 export default Index;
