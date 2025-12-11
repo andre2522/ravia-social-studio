@@ -21,8 +21,8 @@ const Index = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const utmParams = new URLSearchParams();
     
-    // Captura todos os parâmetros UTM
-    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    // Captura todos os parâmetros UTM e sck
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'sck'];
     utmKeys.forEach(key => {
       const value = urlParams.get(key);
       if (value) {
